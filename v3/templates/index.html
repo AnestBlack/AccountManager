@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>Account Manager v3.0</title>
+    <script src='/static/js/jquery-3.3.1.js'></script>
+    <script>
+		$(document).ready(function(){
+			$("#Generate").click(function(){
+				var Generate_AccountStr = "";
+				Generate_Account(Generate_AccountStr);
+			})
+			$("#Save").click(function(){
+				switch( $("input[name='Password_Saveitem']:checked").val() ) {
+					case "1":
+						Save_Item( $('#pw1').val() );
+						break;
+					case "2":
+						Save_Item( $('#pw2').val() );
+						break;
+					case "3":
+						Save_Item( $('#pw3').val() );
+						break;
+					case "max":
+						Save_Item( $('#pwmax').val() );
+						break;
+
+				}
+			})
+		});
+		function Generate_Account(Generate_AccountStr){
+			if (document.getElementById('Account_Key').checked){
+				Generate_AccountStr = $('#Account').val();
+				document.getElementById('Result_Account').value = Generate_AccountStr;
+
+				Generate_pw1(Generate_AccountStr)
+			}
+			else if (document.getElementById('Address').value != ""){
+				$.get("/getAccount/"+$('#Address').val(),function(data){
+					Generate_AccountStr = data;
+					document.getElementById("Result_Account").value = Generate_AccountStr;
+
+					Generate_pw1()
+				})
+				
+			}else{
+				alert('Error');
+			}
+		}
+		function Generate_pw1(){
+				$.get("/getPassword_1/"+$('#Address').val()+"/"+$('#Result_Account').val() ,function(data){
+					document.getElementById("pw1").value = data;
+
+					Generate_pw2()
+				})	
+			
+		}
+		function Generate_pw2(){
+			$.get("/getPassword_2/"+$('#Address').val()+"/"+$('#Result_Account').val() ,function(data){
+				document.getElementById("pw2").value = data;
+
+				Generate_pw3()
+				}
+			)
+		}
+		function Generate_pw3(){
+			$.get("/getPassword_3/"+$('#Address').val()+"/"+$('#Result_Account').val() ,function(data){
+				document.getElementById("pw3").value = data;
+
+				Generate_pwmax()
+				}
+			)
+		}
+		function Generate_pwmax(){
+			$.get("/getPassword_max/"+$('#pw3').val() ,function(data){
+				document.getElementById("pwmax").value = data;
+				}
+			)
+		}
+		function Save_Item(Save_Item_Password){
+			$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) ,function(){
+				alert('Save Succ');
+				}
+			)
+		}
+    </script>
+</head>
+<body>
+	<p>Languague : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
+	<p>Function: <a href='{% url 'search' %}'>Search</a></p>
+	&emsp;&emsp;<span>Address : </span><input id="Address" /><br><br>
+	&emsp;&emsp;<span>Account : </span><input id="Account" /><br><br>
+	&emsp;&emsp;<span>Used Account Key : </span><input type='checkbox' id="Account_Key" /><br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Generate' value="Generate"><br><br><br>
+	<span>------------------------------------------------------Generated Result-------------------------------------------------------</span><br><br>
+	&emsp;&emsp;<span>Account : </span><input id="Result_Account" /><br><br>
+	&emsp;&emsp;<span>Password lv 1 : </span><input id="pw1" />&emsp;<input type="radio" name="Password_Saveitem" value="1"><br><br>
+	&emsp;&emsp;<span>Password lv 2 : </span><input id="pw2" />&emsp;<input type="radio" name="Password_Saveitem" value="2"><br><br>
+	&emsp;&emsp;<span>Password lv 3 : </span><input id="pw3" />&emsp;<input type="radio" name="Password_Saveitem" value="3"><br><br>
+	&emsp;&emsp;<span>Password lv max : </span><input id="pwmax" size="70"/>&emsp;<input type="radio" name="Password_Saveitem" value="max" checked><br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Save' value="Save Result"/><br><br><br>
+</body>
+</html>
