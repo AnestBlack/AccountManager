@@ -3,25 +3,27 @@
 	<title>Account Manage v3.0</title>
 	<script src='/static/js/jquery-3.3.1.js'></script>
 	<script>
+	var translate_to_chinese="";
 	$(document).ready(function(){
 			$("#Search_button").click(function(){
 				alert('succ');
-				switch( $("#Search_item").val() ) {
+				switch( $("input[name='Search_item']:checked").val() ) {
 					case "0":
-						Searched_Item( $("#Search_item").val() , $('#Search_Address').val() );
+						Searched_Item( $("input[name='Search_item']:checked").val() , $('#Search_Address').val() );
 						break;
 					case "1":
-						Searched_Item( $("#Search_item").val() , $('#Search_Account').val() );
+						Searched_Item( $("input[name='Search_item']:checked").val() , $('#Search_Account').val() );
 						break;
 					case "2":
-						Searched_Item( $("#Search_item").val() , $('#Search_Password').val() );
+						Searched_Item( $("input[name='Search_item']:checked").val() , $('#Search_Password').val() );
 						break;
 				}
 			})
 		})
 	function Searched_Item(key,keyword){
 		$.get("/searched/"+key+"/"+keyword ,function(data){
-			document.getElementById('Searched').innerHTML = data;
+			translate_to_chinese = data.replace(/<td>Address/,'<td>地址').replace(/<td>Account/,'<td>帐号').replace(/<td>Password/,'<td>密码').replace(/<td>Date/,'<td>日期');
+			document.getElementById('Searched').innerHTML = translate_to_chinese;
 		})	
 	}
 	</script>
@@ -29,11 +31,11 @@
 <body>
 	<p>语言 : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
 	<p>功能区: <a href='{% url "index_zh" %}'>生成器</a></p>
-	<span>------------------------------------------------------Search-------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>地址 : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" checked><br><br>
-	&emsp;&emsp;<span>帐号 : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1"><br><br>
-	&emsp;&emsp;<span>密码 : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2"><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Search_button' value="Search"/><br><br><br>
+	<span>------------------------------------------------------搜索-------------------------------------------------------</span><br><br>
+	&emsp;&emsp;<span>地址 : </span><input id="Search_Address" />&emsp;<input type="radio" name="Search_item" value="0" checked><br><br>
+	&emsp;&emsp;<span>帐号 : </span><input id="Search_Account" />&emsp;<input type="radio" name="Search_item" value="1"><br><br>
+	&emsp;&emsp;<span>密码 : </span><input id="Search_Password" />&emsp;<input type="radio" name="Search_item" value="2"><br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Search_button' value="搜索" onclick="Searched_click()"/><br><br><br>
 	<p id='Searched'></p>
 </body>
 </html>
