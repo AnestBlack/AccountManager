@@ -31,4 +31,5 @@ urlpatterns = [
     path('getPassword_max/<str:Password_3>',v3_views.getPassword_max,name='getPassword_max'),
     path('Save_Result/<str:AddressStr>/<str:AccountStr>/<str:password>',v3_views.Save_Result_to_sql,name='Save_Result_to_sql'),
     path('searched/<int:keyInt>/<str:keywordStr>',v3_views.Search_Item,name='Search_Item'),
+    path('Backup',v3_views.Backup_Database,name="backup"),
 ]

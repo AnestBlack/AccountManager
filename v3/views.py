@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import ctypes , configparser , hashlib , re , base64 ,time ,os.path ,sqlite3 ,sys
 from struct import pack
 
-MyCode = 'YjFkZjVhMWI0Y2M='
+MyCode = 'anyword'+  # please change the value of left and delete the "+"
 def index(request):
     return render(request, 'index.html')
 
@@ -138,3 +138,14 @@ def Delete_Item(request,keywordStr):
     c.execute('delete from Data where Date = "'+keywordStr+'";')
     conn.commit()
     return HttpResponse('succ')
+
+def Backup_Database(request):
+	Database_file=open('Database.db',"rb")
+	
+	response_file=HttpResponse(Database_file.read())
+	response_file['Content-Type']=r'application/octet-stream'
+	response_file['Content-Disposition'] = 'attachment; filename="'+time.strftime("%Y-%m-%d (%H-%M-%S) AM3_backup.db")+'"'
+	
+	Database_file.close()
+	Database_file=None
+	return response_file
