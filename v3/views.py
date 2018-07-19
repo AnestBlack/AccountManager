@@ -149,3 +149,7 @@ def Backup_Database(request):
 	Database_file.close()
 	Database_file=None
 	return response_file
+"""
+def Restore_Database(request):
+	pass
+"""

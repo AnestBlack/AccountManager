@@ -6,10 +6,10 @@
 ### 0. Set "MyCode"
 #### Opened the views.py in text-editor-software(root/v3/views.py), change 'anyword' to anyword and delete the "+";
 #### e.g.:<br>MyCode='8uj98hy_*asd'
-#### <font color="#f00">Please change the word as same as the e.g.!!!</font>
+#### <font color="#f00">Please don't change the word as same as the e.g.!!!</font>
 
 ### 1. Keyin shell "manage.py runserver"
-#### e.g.: Windows : run "Start.bat",if you installed two version of python , please change the bat file by yourself :)
+#### e.g.: Windows : run "Start.bat",if you installed two versions of python , please change the bat file by yourself :)
 #### Linux : keyin "python3 manage.py runserver"
 
 ### 2. Openning Address( 127.0.0.1:8000 ) ,it's ok on anyone browser
@@ -20,13 +20,13 @@
 #### Address : Which web-site you need to registered.
 #### Account :If you want to design your account ,keyin please and checkin Next "Used Account Key" , else you needn't keyin anythings in it and don't checkin "Used Account Key"
 #### Generate : It's program start work button.
-#### bottom one-check : checkin you need to program to  save the password.
+#### bottom one-check : checkin you needed to program to  save the password.
 #### Save Result : Save Address and Account where under "the Generated Result" line and password which you check.
 ### 4. Search Item which you saved on the Database
 #### checkin Address , Account and password which you have remembered ,keyin one and checkin the one-check.
 #### Search : Start Search
-
 <br>
+
 ## Note
 ### 1. Database is on the root-path.(SQLite3)
 ### 2. run on local area network please run "python3 manage.py runserver 0.0.0.0:8000"
@@ -34,7 +34,7 @@
 ## Warming
 # <font color="#f00">1. It must never be used on production machines and linked on public network!!!<br><br>It must never be used on production machines and linked on public network!!!<br><br>It must never be used on production machines and linked on public network!!!<br><br></font>
 ## API
-### all is based on "127.0.0.1:8000"
+### all are based on "127.0.0.1:8000"
 
 ### 1. index
 #### English home page
@@ -54,7 +54,7 @@
 #### Chinese search page
 
 ### 6. getAccount
-#### Get a account
+#### Get an account
 #### e.g.: 127.0.0.1:8000/getAccount/Str
 #### Str : text with no spaces
 #### return a text
@@ -84,7 +84,7 @@
 #### return a text
 
 ### 11. Save_Result
-#### Save data in the Database
+#### Save data onto the Database
 #### e.g.: 127.0.0.1:8000/Save_Result/Str1/Str2/Str3
 #### Str1 : text with Address <br> Str2 : text with Account <br> Str3: Password
 

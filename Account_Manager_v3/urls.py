@@ -32,4 +32,5 @@ urlpatterns = [
     path('Save_Result/<str:AddressStr>/<str:AccountStr>/<str:password>',v3_views.Save_Result_to_sql,name='Save_Result_to_sql'),
     path('searched/<int:keyInt>/<str:keywordStr>',v3_views.Search_Item,name='Search_Item'),
     path('Backup',v3_views.Backup_Database,name="backup"),
+    #path('Restore',v3_views.Restore_Database,name='restore'),
 ]
