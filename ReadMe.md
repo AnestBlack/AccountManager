@@ -6,7 +6,7 @@
 ### 0. Set "MyCode"
 #### Opened the views.py in text-editor-software(root/v3/views.py), change 'anyword' to anyword and delete the "+";
 #### e.g.:<br>MyCode='8uj98hy_*asd'
-#### <font color="#f00">Please don't change the word as same as the e.g.!!!</font>
+#### <font color="#f00">Please don't change the word as same as the EXAMPLE!!!</font>
 
 ### 1. Keyin shell "manage.py runserver"
 #### e.g.: Windows : run "Start.bat",if you installed two versions of python , please change the bat file by yourself :)
