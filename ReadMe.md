@@ -8,21 +8,23 @@
 #### e.g.:<br>MyCode='8uj98hy_*asd'
 #### <font color="#f00">Please don't change the word as same as the EXAMPLE!!!</font>
 
-### 1. Keyin shell "manage.py runserver"
+### 1. Copy the "Database.example.db" on the root , Paste it on the root and change name to "Database.db"
+
+### 2. Keyin shell "manage.py runserver"
 #### e.g.: Windows : run "Start.bat",if you installed two versions of python , please change the bat file by yourself :)
 #### Linux : keyin "python3 manage.py runserver"
 
-### 2. Openning Address( 127.0.0.1:8000 ) ,it's ok on anyone browser
+### 3. Openning Address( 127.0.0.1:8000 ) ,it's ok on anyone browser
 #### e.g.: Windows : keyin cmd "start 127.0.0.1:8000"
 #### Linux keyin "w3m 127.0.0.1:8000"
 
-### 3. Start your work
+### 4. Start your work
 #### Address : Which web-site you need to registered.
 #### Account :If you want to design your account ,keyin please and checkin Next "Used Account Key" , else you needn't keyin anythings in it and don't checkin "Used Account Key"
 #### Generate : It's program start work button.
 #### bottom one-check : checkin you needed to program to  save the password.
 #### Save Result : Save Address and Account where under "the Generated Result" line and password which you check.
-### 4. Search Item which you saved on the Database
+### 5. Search Item which you saved on the Database
 #### checkin Address , Account and password which you have remembered ,keyin one and checkin the one-check.
 #### Search : Start Search
 <br>
