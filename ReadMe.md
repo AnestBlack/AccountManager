@@ -2,6 +2,12 @@
  This program is based on python3.6.3 and django-2.0.3
  <br>
 ##### Languague : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
+
+## History
+### 2018-07-25 : v3.2 is not supported before 3.2 version database;
+### please use Tool/Database_Update_to_3.2.py to Update your Database , copy your database to Tool and run Database_Update_to_3.3.py,Move  New_Database.db to root,backup your database and replace it .
+
+
 ## Usage:
 ### 0. Set "MyCode"
 #### Opened the views.py in text-editor-software(root/v3/views.py), change 'anyword' to anyword and delete the "+";
@@ -23,10 +29,17 @@
 #### Account :If you want to design your account ,keyin please and checkin Next "Used Account Key" , else you needn't keyin anythings in it and don't checkin "Used Account Key"
 #### Generate : It's program start work button.
 #### bottom one-check : checkin you needed to program to  save the password.
+#### Text: you want to sign text with this account.
 #### Save Result : Save Address and Account where under "the Generated Result" line and password which you check.
+
 ### 5. Search Item which you saved on the Database
-#### checkin Address , Account and password which you have remembered ,keyin one and checkin the one-check.
+#### checkin Address , Account, password and Text which you have remembered ,keyin one and checkin the one-check.
 #### Search : Start Search
+
+### 6.Update your Text
+#### Date:which you search get
+#### Text:you want to update text
+
 <br>
 
 ## Note
@@ -100,3 +113,16 @@
 #### Get the Database backup download.
 #### e.g.:127.0.0.1:8000/backup
 #### return a db file.
+
+### 14.Update
+#### English Update Page
+#### e.g.:127.0.0.1:8000/Update
+
+### 15.Update/zh
+#### Chinese Update page
+#### e.g.:127.0.0.1:8000/Update/zh
+
+### 16.Update_Text
+#### Update your text
+#### e.g.: 127.0.0.1:8000/Update_Text/str1/str2
+#### str1:Date string ; str2:Text string

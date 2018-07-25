@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Account Manage v3.2</title>
+	<script src='/static/js/jquery-3.3.1.js'></script>
+	<script>
+	$(document).ready(function(){
+			$("#Update_button").click(function(){
+				Update_Item( $("#Update_Date").val() , $("#Update_Text").val())
+			})
+		})
+	function Update_Item(key,keyword){
+		$.get("/Update_Text/"+key+"/"+keyword ,function(){
+			alert('succ')
+		})	
+	}
+	</script>
+</head>
+<body>
+	<p>Languague : <a href="{% url 'Update' %}">English</a>&emsp;&emsp;<a href='{% url "Update_zh" %}'>简体中文</a></p>
+	<p>Function: <a href='/'>Generation</a> <a href="{% url 'search'%}">Search</a></p>
+	<span>------------------------------------------------------Update-------------------------------------------------------</span><br><br>
+	&emsp;&emsp;<span>Date : </span><input id="Update_Date" /><br><br>
+	&emsp;&emsp;<span>Text : </span><input id="Update_Text" /><br><br>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Update_button' value="Update"/><br><br><br>
+</body>
+</html>

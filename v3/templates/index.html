@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Account Manager v3.1</title>
+    <title>Account Manager v3.2</title>
     <script src='/static/js/jquery-3.3.1.js'></script>
     <script>
 		$(document).ready(function(){
@@ -76,26 +76,31 @@
 			)
 		}
 		function Save_Item(Save_Item_Password){
-			$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) ,function(){
-				alert('Save Succ');
-				}
+			if ($('#text').val()=="")
+			{
+				$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/None" , 
+					function(){alert('Save Succ');})
+			}else{$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/" + window.btoa($('#text').val()) , 
+					function(){alert('Save Succ');}
 			)
+			}
 		}
     </script>
 </head>
 <body>
 	<p>Languague : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
-	<p>Function: <a href='{% url 'search' %}'>Search</a></p>
+	<p>Function: <a href='{% url 'search' %}'>Search</a> <a href='{% url "Update"%}'>Update Text</a> </p>
 	&emsp;&emsp;<span>Address : </span><input id="Address" /><br><br>
 	&emsp;&emsp;<span>Account : </span><input id="Account" /><br><br>
 	&emsp;&emsp;<span>Used Account Key : </span><input type='checkbox' id="Account_Key" /><br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Generate' value="Generate"><br><br><br>
-	<span>------------------------------------------------------Generated Result-------------------------------------------------------</span><br><br>
+	<span>----------------------------------------------------------------------------Generated Result-----------------------------------------------------------------------------</span><br><br>
 	&emsp;&emsp;<span>Account : </span><input id="Result_Account" /><br><br>
 	&emsp;&emsp;<span>Password lv 1 : </span><input id="pw1" />&emsp;<input type="radio" name="Password_Saveitem" value="1"><br><br>
 	&emsp;&emsp;<span>Password lv 2 : </span><input id="pw2" />&emsp;<input type="radio" name="Password_Saveitem" value="2"><br><br>
 	&emsp;&emsp;<span>Password lv 3 : </span><input id="pw3" />&emsp;<input type="radio" name="Password_Saveitem" value="3"><br><br>
 	&emsp;&emsp;<span>Password lv max : </span><input id="pwmax" size="70"/>&emsp;<input type="radio" name="Password_Saveitem" value="max" checked><br><br>
+	&emsp;&emsp;<span>Text : </span><input id="text" size="50"/><br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Save' value="Save Result"/><br><br><br>
 </body>
 </html>

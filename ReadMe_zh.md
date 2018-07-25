@@ -2,6 +2,13 @@
  此程序基于 python3.6.3 和 django-2.0.3
  <br>
 ##### 语言 : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
+
+## 历史记录
+### 2018-07-25 : v3.2 不再支持v3.2前面的版本数据库
+### 请使用Tool/Database_Update_to_3.2.py 来更新你的数据库，复制你的数据库到Tool然后运行Database_Update_to_3.2.py，备份好你原来的数据库并移动New_Database.db到根目录替换原来的！
+
+
+
 ## 用法:
 ### 0. 设置 "MyCode"
 #### 用文本编辑软件打开(非windows自带的笔记本) views.py(root/v3/views.py), 把 'anyword' 改成任意正常范围内的数字和字母，并去掉右边的"+"

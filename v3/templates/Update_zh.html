@@ -31,8 +31,8 @@
 </head>
 <body>
 	<p>语言 : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
-	<p>功能区: <a href='{% url "index_zh" %}'>生成器</a> <a href="{% url 'Update_zh'%}">更新标注</a></p>
-	<span>------------------------------------------------------Search-------------------------------------------------------</span><br><br>
+	<p>功能区: <a href='{% url "index_zh" %}'>生成器</a> <a href="{% url 'search_zh'%}">搜索</a></p>
+	<span>------------------------------------------------------更新标注-------------------------------------------------------</span><br><br>
 	&emsp;&emsp;<span>地址 : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked><br><br>
 	&emsp;&emsp;<span>帐号 : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button"><br><br>
 	&emsp;&emsp;<span>密码 : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button"><br><br>

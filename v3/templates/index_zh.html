@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Account Manager v3.1</title>
+    <title>Account Manager v3.2</title>
     <script src='/static/js/jquery-3.3.1.js'></script>
     <script>
 		$(document).ready(function(){
@@ -76,26 +76,31 @@
 			)
 		}
 		function Save_Item(Save_Item_Password){
-			$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) ,function(){
-				alert('保存成功');
-				}
+			if ($('#text').val()=="")
+			{
+				$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/None" , 
+					function(){alert('保存成功');})
+			}else{$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/" + $('#text').val() , 
+					function(){alert('保存成功');}
 			)
+			}
 		}
     </script>
 </head>
 <body>
 	<p>语言 : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
-	<p>功能区: <a href="{% url 'search_zh' %}">搜索</a></p>
+	<p>功能区: <a href="{% url 'search_zh' %}">搜索</a> <a href="{% url 'Update_zh'%}">更新标注</a></p>
 	&emsp;&emsp;<span>地址 : </span><input id="Address" /><br><br>
 	&emsp;&emsp;<span>帐号 : </span><input id="Account" /><br><br>
 	&emsp;&emsp;<span>自定义帐号 : </span><input type='checkbox' id="Account_Key" /><br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Generate' value="生成"><br><br><br>
-	<span>------------------------------------------------------生成结果-------------------------------------------------------</span><br><br>
+	<span>----------------------------------------------------------------------------生成结果-----------------------------------------------------------------------------</span><br><br>
 	&emsp;&emsp;<span>帐号 : </span><input id="Result_Account" /><br><br>
 	&emsp;&emsp;<span>密码 lv 1 : </span><input id="pw1" />&emsp;<input type="radio" name="Password_Saveitem" value="1"><br><br>
 	&emsp;&emsp;<span>密码 lv 2 : </span><input id="pw2" />&emsp;<input type="radio" name="Password_Saveitem" value="2"><br><br>
 	&emsp;&emsp;<span>密码 lv 3 : </span><input id="pw3" />&emsp;<input type="radio" name="Password_Saveitem" value="3"><br><br>
 	&emsp;&emsp;<span>密码 lv max : </span><input id="pwmax" size="70"/>&emsp;<input type="radio" name="Password_Saveitem" value="max" checked><br><br>
+	&emsp;&emsp;<span>标注 : </span><input id="text" size="50"/><br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Save' value="保存结果"/><br><br><br>
 </body>
 </html>
