@@ -1,16 +1,16 @@
-# Account Manage v3.1
+# Account Manage v3.3
  This program is based on python3.6.3 and django-2.0.3
  <br>
 ##### Languague : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
 
-## History
+## Important History
 ### 2018-07-25 : v3.2 is not supported before 3.2 version database;
 ### please use Tool/Database_Update_to_3.2.py to Update your Database , copy your database to Tool and run Database_Update_to_3.3.py,Move  New_Database.db to root,backup your database and replace it .
 
 
 ## Usage:
 ### 0. Set "MyCode"
-#### Opened the views.py in text-editor-software(root/v3/views.py), change 'anyword' to anyword and delete the "+";
+#### Opened the v3/encypt.py in text-editor-software, change 'anyword' to anyword and delete the "+";
 #### e.g.:<br>MyCode='8uj98hy_*asd'
 #### <font color="#f00">Please don't change the word as same as the EXAMPLE!!!</font>
 

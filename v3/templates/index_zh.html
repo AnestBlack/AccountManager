@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Account Manager v3.2</title>
+    <title>Account Manager v3.3</title>
     <script src='/static/js/jquery-3.3.1.js'></script>
     <script>
 		$(document).ready(function(){
@@ -70,7 +70,7 @@
 			)
 		}
 		function Generate_pwmax(){
-			$.get("/getPassword_max/"+$('#pw3').val() ,function(data){
+			$.get("/getPassword_max/",function(data){
 				document.getElementById("pwmax").value = data;
 				}
 			)
