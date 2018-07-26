@@ -30,13 +30,13 @@
 	</script>
 </head>
 <body>
-	<p>Languague : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
-	<p>Function: <a href='/'>Generation</a> <a href='{% url "Update"%}'>Update Text</a></p>
-	<span>------------------------------------------------------Search-------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>Address : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked><br><br>
-	&emsp;&emsp;<span>Account : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>Password : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>Text : </span><input id="Search_Text" />&emsp;<input type="radio" id="Search_item" value="3" name="Search_select_button"><br><br>
+	<p>语言 : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
+	<p>功能区: <a href='{% url "index_zh" %}'>生成器</a> <a href="{% url 'search_zh'%}">搜索</a></p>
+	<span>------------------------------------------------------更新标注-------------------------------------------------------</span><br><br>
+	&emsp;&emsp;<span>地址 : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked><br><br>
+	&emsp;&emsp;<span>帐号 : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button"><br><br>
+	&emsp;&emsp;<span>密码 : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button"><br><br>
+	&emsp;&emsp;<span>标注 : </span><input id="Search_Text" />&emsp;<input type="radio" id="Search_item" value="3" name="Search_select_button"><br><br>
 	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Search_button' value="Search"/><br><br><br>
 	<p id='Searched'></p>
 </body>
