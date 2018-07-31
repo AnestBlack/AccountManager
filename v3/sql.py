@@ -3,26 +3,31 @@ from django.http import HttpResponse
 import base64 ,time ,sqlite3
 
 
-def Save_Result_to_sql(request,AddressStr,AccountStr,password,Text):
-    if not AddressStr and not AccountStr and not password:
-        return 0
-    if len(password)%4 != 0:
-        password+='='*(4-len(password)%4)
-    password=base64.b64decode( password.encode('utf-8') ).decode('utf-8')
+def Save_Result_to_sql(request):
+    """if not AddressStr and not AccountStr and not password:
+        return 0"""
+    if request.method=="POST":
+        if not request.POST.get('AddressStr','') and request.POST.get('AccountStr','') and request.POST.get('password',''):
+            return 0
 
-    AddressStr = base64.b64encode(AddressStr.encode()).decode()
-    AccountStr = base64.b64encode(AccountStr.encode()).decode()
-    password = base64.b64encode(password.encode()).decode()
-    if Text:
-        Text = base64.b64encode(Text.encode()).decode()
-    else:
-        Text="NoValue"
-    conn = sqlite3.connect('Database.db')
-    c = conn.cursor()
-    c.execute('insert into Data values("'+AddressStr+'","'+AccountStr +'","'+ password +'","'+ base64.b64encode( time.strftime(r"%Y-%m-%d--%H-%M-%S--%A").encode() ).decode()+'","'+Text+'");')
-    conn.commit()
-    c.close();conn.close();c,conn=None,None
-    return HttpResponse("Succ")
+        AddressStr=request.POST.get('AddressStr','')
+        AccountStr=request.POST.get('AccountStr','')
+        password=request.POST.get('password','')
+        Text=request.POST.get('Text','')
+
+        AddressStr = base64.b64encode(AddressStr.encode()).decode()
+        AccountStr = base64.b64encode(AccountStr.encode()).decode()
+        password = base64.b64encode(password.encode()).decode()
+        if Text:
+            Text = base64.b64encode(Text.encode()).decode()
+        else:
+            Text="Tm9WYWx1ZQ==" # NoValue
+        conn = sqlite3.connect('Database.db')
+        c = conn.cursor()
+        c.execute('insert into Data values("'+AddressStr+'","'+AccountStr +'","'+ password +'","'+ base64.b64encode( time.strftime(r"%Y-%m-%d--%H-%M-%S--%A").encode() ).decode()+'","'+Text+'");')
+        conn.commit()
+        c.close();conn.close();c,conn=None,None
+        return HttpResponse("Succ")
 
 def Search_Item(request,keyInt,keywordStr):
     if not keyInt and not keywordStr:
@@ -56,7 +61,7 @@ def Search_Item(request,keyInt,keywordStr):
          <tr><td>Account</td><td>'+base64.b64decode(Item[1].encode()).decode()+'</td></tr> \
           <tr><td>Password</td><td>'+base64.b64decode(Item[2].encode()).decode()+'</td></tr>\
           <tr><td>Date</td><td>'+base64.b64decode(Item[3].encode()).decode()+'</td></tr>\
-          <tr><td>Text</td><td>'+base64.b64decode(Item[4].encode()).decode()+'</td></tr></table><br>'
+          <tr><td>Text</td><td>'+base64.b64decode(Item[4].encode()).decode() +'</td></tr></table><br>'
     result_Str+='</font>'
     c.close();conn.close();c,conn=None,None
     return HttpResponse(result_Str)

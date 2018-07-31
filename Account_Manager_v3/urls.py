@@ -33,7 +33,7 @@ urlpatterns = [
     path('getPassword_3/<str:AddressStr>/<str:AccountStr>',v3_encypt.getPassword_3,name='getPassword_3'),
     path('getPassword_max/',v3_encypt.getPassword_max,name='getPassword_max'),
 
-    path('Save_Result/<str:AddressStr>/<str:AccountStr>/<str:password>/<str:Text>',v3_sql.Save_Result_to_sql,name='Save_Result_to_sql'),
+    path('Save_Result/',v3_sql.Save_Result_to_sql,name='Save_Result_to_sql'),
     path('searched/<int:keyInt>/<str:keywordStr>',v3_sql.Search_Item,name='Search_Item'),
     path('Backup',v3_sql.Backup_Database,name="backup"),
     path('Update_Text/<str:DateStr>/<str:TextStr>',v3_sql.Update_Text,name='Update_text'),

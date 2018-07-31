@@ -76,14 +76,27 @@
 			)
 		}
 		function Save_Item(Save_Item_Password){
+
 			if ($('#text').val()=="")
 			{
-				$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/None" , 
-					function(){alert('Save Succ');})
-			}else{$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/" + window.btoa($('#text').val()) , 
-					function(){alert('Save Succ');}
-			)
+				$.post("{% url 'Save_Result_to_sql' %}",{
+					AddressStr:$('#Address').val(),
+					AccountStr:$('#Result_Account').val(),
+					password:Save_Item_Password
+				},function(data){
+					alert("succ");
+				})
+			}else{
+				$.post("{% url 'Save_Result_to_sql' %}",{
+					AddressStr:$('#Address').val(),
+					AccountStr:$('#Result_Account').val(),
+					password:Save_Item_Password,
+					Text:$('#text').val()
+				},function(data){
+					alert("succ");
+				})
 			}
+
 		}
     </script>
 </head>
