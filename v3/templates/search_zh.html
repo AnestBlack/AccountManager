@@ -6,18 +6,18 @@
 	$(document).ready(function(){
 			$("#Search_button").click(function(){
 				alert('succ');
-				switch( $("#Search_item").val() ) {
+				switch( $("input[name='Search_select_button']:checked").val() ) {
 					case "0":
-						Searched_Item( $("#Search_item").val() , $('#Search_Address').val() );
+						Searched_Item( $("input[name='Search_select_button']:checked").val() , $('#Search_Address').val() );
 						break;
 					case "1":
-						Searched_Item( $("#Search_item").val() , $('#Search_Account').val() );
+						Searched_Item( $("input[name='Search_select_button']:checked").val() , $('#Search_Account').val() );
 						break;
 					case "2":
-						Searched_Item( $("#Search_item").val() , $('#Search_Password').val() );
+						Searched_Item( $("input[name='Search_select_button']:checked").val() , $('#Search_Password').val() );
 						break;
 					case "3":
-						Searched_Item( $("#Search_item").val() , $('#Search_Text').val() );
+						Searched_Item( $("input[name='Search_select_button']:checked").val() , $('#Search_Text').val() );
 						break;
 				}
 			})
