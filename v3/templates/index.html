@@ -1,7 +1,8 @@
 <html>
 <head>
-    <title>Account Manager v3.3</title>
-    <script src='/static/js/jquery-3.3.1.js'></script>
+    <title>Account Manager</title>
+	<script src='/static/js/jquery-3.3.1.js'></script>
+	<script src='/static/js/updatever.js'></script>
     <script>
 		$(document).ready(function(){
 			$("#Generate").click(function(){
@@ -100,7 +101,8 @@
 		}
     </script>
 </head>
-<body>
+<body onload="updatever()">
+	<p id="ver"></p>
 	<p>Languague : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
 	<p>Function: <a href='{% url 'search' %}'>Search</a> <a href='{% url "Update"%}'>Update Text</a> </p>
 	&emsp;&emsp;<span>Address : </span><input id="Address" /><br><br>

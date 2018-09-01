@@ -1,7 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import base64 ,time ,sqlite3
+import logging
 
+log = logging.getLogger("sql")
+log.setLevel(level=logging.INFO)
+handler = logging.FileHandler("runserver.log")
+handler.setLevel(logging.INFO)
+formatter=logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s <%(funcName)s> %(message)s')
+handler.setFormatter(formatter)
+log.addHandler(handler)
 
 def Save_Result_to_sql(request):
     """if not AddressStr and not AccountStr and not password:
@@ -14,6 +22,8 @@ def Save_Result_to_sql(request):
         AccountStr=request.POST.get('AccountStr','')
         password=request.POST.get('password','')
         Text=request.POST.get('Text','')
+
+        log.info(request.META['REMOTE_ADDR']+" Address { "+AddressStr+" } Account { "+AccountStr+" }")
 
         AddressStr = base64.b64encode(AddressStr.encode()).decode()
         AccountStr = base64.b64encode(AccountStr.encode()).decode()
@@ -50,8 +60,9 @@ def Search_Item(request,keyInt,keywordStr):
             if item == 
     """
     #////////////////////////////////////////////////////////////////////////////////////////////////
-    keywordStr = base64.b64encode(keywordStr.encode()).decode()
+    log.info(request.META['REMOTE_ADDR']+" ["+KeyMode_Str+"] ["+keywordStr+"]")
 
+    keywordStr = base64.b64encode(keywordStr.encode()).decode()
     conn = sqlite3.connect('Database.db')
     c = conn.cursor()
     c.execute('select Address,Account,Password,Date,Text from Data where '+KeyMode_Str+' = "'+keywordStr+'";')
@@ -69,6 +80,8 @@ def Search_Item(request,keyInt,keywordStr):
 def Delete_Item(request,keywordStr):
     if not keywordStr:
         return 0
+    log.warning(request.META['REMOTE_ADDR']+" "+keywordStr)
+
     keywordStr = base64.b64encode(keywordStr.encode()).decode()
     conn = sqlite3.connect('Database.db')
     c = conn.cursor()
@@ -77,19 +90,21 @@ def Delete_Item(request,keywordStr):
     return HttpResponse('succ')
 
 def Backup_Database(request):
-	Database_file=open('Database.db',"rb")
-	
-	response_file=HttpResponse(Database_file.read())
-	response_file['Content-Type']=r'application/octet-stream'
-	response_file['Content-Disposition'] = 'attachment; filename="'+time.strftime("%Y-%m-%d (%H-%M-%S) AM3.2_backup.db")+'"'
-	
-	Database_file.close()
-	Database_file=None
-	return response_file
+    log.warning(request.META['REMOTE_ADDR']+" Downloaded backup file ")
+    Database_file=open('Database.db',"rb")
+    
+    response_file=HttpResponse(Database_file.read())
+    response_file['Content-Type']=r'application/octet-stream'
+    response_file['Content-Disposition'] = 'attachment; filename="'+time.strftime("%Y-%m-%d (%H-%M-%S) AM3.2_backup.db")+'"'
+    
+    Database_file.close()
+    Database_file=None
+    return response_file
 
 def Update_Text(request,DateStr,TextStr):
     if not DateStr or not TextStr:
         return 0
+    log.info(request.META['REMOTE_ADDR']+" DateStr{ "+DateStr+" } TextStr { "+TextStr+" }")
     DateStr=base64.b64encode(DateStr.encode()).decode()
     TextStr=base64.b64encode(TextStr.encode()).decode()
 
@@ -102,5 +117,5 @@ def Update_Text(request,DateStr,TextStr):
     
 """
 def Restore_Database(request):
-	pass
+    pass
 """
