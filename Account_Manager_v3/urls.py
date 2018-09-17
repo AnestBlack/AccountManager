@@ -18,6 +18,7 @@ from django.urls import path
 from v3 import views as v3_views
 from v3 import encypt as v3_encypt
 from v3 import sql as v3_sql
+from v3 import Login as v3_Login
 
 urlpatterns = [
     path('',v3_views.index,name='home'),
@@ -38,6 +39,8 @@ urlpatterns = [
     path('Backup',v3_sql.Backup_Database,name="backup"),
     path('Update_Text/<str:DateStr>/<str:TextStr>',v3_sql.Update_Text,name='Update_text'),
     path('Del/<str:keywordStr>',v3_sql.Delete_Item,name='Delete_Item'),
+
+    path("login/",v3_Login.Login,name="login"),
     #path('admin/', admin.site.urls),
     #path('Restore',v3_views.Restore_Database,name='restore'),
 ]

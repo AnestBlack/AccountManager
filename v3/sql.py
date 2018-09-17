@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import base64 ,time ,sqlite3
+import base64 ,time ,sqlite3 ,hashlib
 import logging
 
 log = logging.getLogger("sql")
@@ -90,6 +90,8 @@ def Delete_Item(request,keywordStr):
     return HttpResponse('succ')
 
 def Backup_Database(request):
+    if not request.COOKIES.get("Auth") == hashlib.md5( str(request.META['REMOTE_ADDR'] + time.strftime("%Y-%m-%d-%H-")+str( int(time.strftime("%M")) //10)     ).encode("utf-8")).hexdigest():
+        return HttpResponse("Auth fail")
     log.warning(request.META['REMOTE_ADDR']+" Downloaded backup file ")
     Database_file=open('Database.db',"rb")
     
