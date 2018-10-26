@@ -36,7 +36,7 @@ def Save_Result_to_sql(request):
         c = conn.cursor()
         c.execute('insert into Data values("'+AddressStr+'","'+AccountStr +'","'+ password +'","'+ base64.b64encode( time.strftime(r"%Y-%m-%d--%H-%M-%S--%A").encode() ).decode()+'","'+Text+'");')
         conn.commit()
-        c.close();conn.close();c,conn=None,None
+        del c,conn
         return HttpResponse("Succ")
 
 def Search_Item(request,keyInt,keywordStr):
@@ -74,7 +74,7 @@ def Search_Item(request,keyInt,keywordStr):
           <tr><td>Date</td><td>'+base64.b64decode(Item[3].encode()).decode()+'</td></tr>\
           <tr><td>Text</td><td>'+base64.b64decode(Item[4].encode()).decode() +'</td></tr></table><br>'
     result_Str+='</font>'
-    c.close();conn.close();c,conn=None,None
+    del c,conn
     return HttpResponse(result_Str)
 
 def Delete_Item(request,keywordStr):
@@ -87,6 +87,7 @@ def Delete_Item(request,keywordStr):
     c = conn.cursor()
     c.execute('delete from Data where Date = "'+keywordStr+'";')
     conn.commit()
+    del c,conn
     return HttpResponse('succ')
 
 def Backup_Database(request):
@@ -97,10 +98,10 @@ def Backup_Database(request):
     
     response_file=HttpResponse(Database_file.read())
     response_file['Content-Type']=r'application/octet-stream'
-    response_file['Content-Disposition'] = 'attachment; filename="'+time.strftime("%Y-%m-%d (%H-%M-%S) AM3.2_backup.db")+'"'
+    response_file['Content-Disposition'] = 'attachment; filename="'+time.strftime("%Y-%m-%d (%H-%M-%S) AM3.4_backup.db")+'"'
     
     Database_file.close()
-    Database_file=None
+    del Database_file
     return response_file
 
 def Update_Text(request,DateStr,TextStr):
@@ -114,7 +115,7 @@ def Update_Text(request,DateStr,TextStr):
     c = conn.cursor()
     c.execute('update Data set Text="'+TextStr+'" where Date="'+DateStr +'";')
     conn.commit()
-    c.close();conn.close();c,conn=None,None
+    del c,conn
     return HttpResponse('succ')
     
 """
