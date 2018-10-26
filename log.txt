@@ -1,9 +1,0 @@
-2018-09-01 14:20:08,825 - v3.sql - INFO - Start print log
-2018-09-01 14:20:08,826 - v3.sql - WARNING - Something maybe fail.
-2018-09-01 14:20:08,826 - v3.sql - INFO - Finish
-2018-09-01 14:20:16,902 - v3.sql - INFO - Start print log
-2018-09-01 14:20:16,902 - v3.sql - WARNING - Something maybe fail.
-2018-09-01 14:20:16,902 - v3.sql - INFO - Finish
-2018-09-01 14:20:32,510 - v3.sql - INFO - Start print log
-2018-09-01 14:20:32,510 - v3.sql - WARNING - Something maybe fail.
-2018-09-01 14:20:32,510 - v3.sql - INFO - Finish

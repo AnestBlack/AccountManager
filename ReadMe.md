@@ -1,9 +1,10 @@
-# Account Manage v3.3
+# Account Manage v3.4
  This program is based on python3.6.3 and django-2.0.3
  <br>
 ##### Languague : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
 
 ## Important History
+### 2018-10-26 : v3.4 has Auth at first.
 ### 2018-07-25 : v3.2 is not supported before 3.2 version database;
 ### please use Tool/Database_Update_to_3.2.py to Update your Database , copy your database to Tool and run Database_Update_to_3.3.py,Move  New_Database.db to root,backup your database and replace it .
 
