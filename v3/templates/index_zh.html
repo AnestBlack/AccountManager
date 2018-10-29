@@ -1,7 +1,8 @@
 <html>
 <head>
-    <title>Account Manager v3.3</title>
-    <script src='/static/js/jquery-3.3.1.js'></script>
+    <title>Account Manager</title>
+	<script src='/static/js/jquery-3.3.1.js'></script>
+	<script src='/static/js/updatever.js'></script>
     <script>
 		$(document).ready(function(){
 			$("#Generate").click(function(){
@@ -78,16 +79,28 @@
 		function Save_Item(Save_Item_Password){
 			if ($('#text').val()=="")
 			{
-				$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/None" , 
-					function(){alert('保存成功');})
-			}else{$.get( "/Save_Result/" + $('#Address').val() + "/" + $('#Result_Account').val() + "/" + window.btoa(Save_Item_Password) + "/" + $('#text').val() , 
-					function(){alert('保存成功');}
-			)
+				$.post("{% url 'Save_Result_to_sql' %}",{
+					AddressStr:$('#Address').val(),
+					AccountStr:$('#Result_Account').val(),
+					password:Save_Item_Password
+				},function(data){
+					alert("succ");
+				})
+			}else{
+				$.post("{% url 'Save_Result_to_sql' %}",{
+					AddressStr:$('#Address').val(),
+					AccountStr:$('#Result_Account').val(),
+					password:Save_Item_Password,
+					Text:$('#text').val()
+				},function(data){
+					alert("succ");
+				})
 			}
 		}
     </script>
 </head>
-<body>
+<body onload="updatever()">
+	<p id="ver"></p>
 	<p>语言 : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
 	<p>功能区: <a href="{% url 'search_zh' %}">搜索</a> <a href="{% url 'Update_zh'%}">更新标注</a></p>
 	&emsp;&emsp;<span>地址 : </span><input id="Address" /><br><br>

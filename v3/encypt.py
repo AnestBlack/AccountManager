@@ -4,11 +4,11 @@ import hashlib , re , base64 ,time , string ,random
 from struct import pack
 
 MyCode = 'anyword'+  # please change the value of left and delete the "+"
-r=random.Random(MyCode)
+r=random.Random(MyCode+time.strftime(r"%Y-%m-%d %H-%M-%S"))
 
 def getAccount(request,AddressStr):
     try:
-        Accountmd5Str=hashlib.md5( str(AddressStr+"AM3.0"+time.strftime("%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8") ).hexdigest()
+        Accountmd5Str=hashlib.md5( str(AddressStr+"AM3.0"+time.strftime(r"%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8") ).hexdigest()
         AccountStrList=re.compile("[a-z]").findall(Accountmd5Str)
         AccountStr=AccountStrList[0]
         i=int( ( len(Accountmd5Str)-len(AccountStrList) ) /len(Accountmd5Str) )
@@ -23,7 +23,7 @@ def getPassword_1(request,AddressStr,AccountStr):
     if not AddressStr or not AccountStr:
         return HttpResponse("")
     try:
-        AddressStr_And_Account_md5_str=hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime("%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
+        AddressStr_And_Account_md5_str=hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime(r"%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
         PasswordNumlist=re.compile("[0-9]").findall(AddressStr_And_Account_md5_str)
         return HttpResponse(GenerateFunction_HandleList_to_Str(PasswordNumlist)[:6])
     except IOError:
@@ -31,7 +31,7 @@ def getPassword_1(request,AddressStr,AccountStr):
 
 def getPassword_2(request,AddressStr,AccountStr):
     try:
-        AddressStr_And_Account_md5_str=hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime("%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
+        AddressStr_And_Account_md5_str=hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime(r"%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
         i = 0
         Password_NumAndWord_Str=""
         while i < len(AddressStr_And_Account_md5_str):
@@ -43,7 +43,7 @@ def getPassword_2(request,AddressStr,AccountStr):
 
 def getPassword_3(request,AddressStr,AccountStr):
     try:
-        PasswordHighest_md5_Str = hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime("%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
+        PasswordHighest_md5_Str = hashlib.md5( str(AddressStr+AccountStr+"AM3.0"+time.strftime(r"%Y-%m-%d %H-%M-%S")+MyCode).encode("utf-8")).hexdigest()
 
         i=0;Password3_Str=""
         while i < len(PasswordHighest_md5_Str):

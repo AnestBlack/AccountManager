@@ -18,6 +18,7 @@ from django.urls import path
 from v3 import views as v3_views
 from v3 import encypt as v3_encypt
 from v3 import sql as v3_sql
+from v3 import Login as v3_Login
 
 urlpatterns = [
     path('',v3_views.index,name='home'),
@@ -33,11 +34,13 @@ urlpatterns = [
     path('getPassword_3/<str:AddressStr>/<str:AccountStr>',v3_encypt.getPassword_3,name='getPassword_3'),
     path('getPassword_max/',v3_encypt.getPassword_max,name='getPassword_max'),
 
-    path('Save_Result/<str:AddressStr>/<str:AccountStr>/<str:password>/<str:Text>',v3_sql.Save_Result_to_sql,name='Save_Result_to_sql'),
+    path('Save_Result/',v3_sql.Save_Result_to_sql,name='Save_Result_to_sql'),
     path('searched/<int:keyInt>/<str:keywordStr>',v3_sql.Search_Item,name='Search_Item'),
     path('Backup',v3_sql.Backup_Database,name="backup"),
     path('Update_Text/<str:DateStr>/<str:TextStr>',v3_sql.Update_Text,name='Update_text'),
     path('Del/<str:keywordStr>',v3_sql.Delete_Item,name='Delete_Item'),
+
+    path("login/",v3_Login.Login,name="login"),
     #path('admin/', admin.site.urls),
     #path('Restore',v3_views.Restore_Database,name='restore'),
 ]
