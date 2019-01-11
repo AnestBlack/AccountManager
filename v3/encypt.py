@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import hashlib , re , base64 ,time , string ,random
 from struct import pack
 
-MyCode = 'anyword'+  # please change the value of left and delete the "+"
+MyCode = """anyword"""+  # please change the value of left and delete the "+"
 r=random.Random(MyCode+time.strftime(r"%Y-%m-%d %H-%M-%S"))
 
 def getAccount(request,AddressStr):
