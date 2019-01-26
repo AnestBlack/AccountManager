@@ -1,3 +1,3 @@
 function updatever(){
-    document.getElementById("ver").innerHTML="Version : 3.41";
+    document.getElementById("ver").innerHTML="3.45";
 }

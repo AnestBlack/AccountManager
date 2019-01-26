@@ -28,16 +28,83 @@
 		})	
 	}
 	</script>
+	<span style="font-size:18px;">
+		<style type="text/css"> 
+			a:link { 
+			font-size: 12px; 
+			color: #000000; 
+			text-decoration: none; 
+			} 
+			a:visited { 
+			font-size: 12px; 
+			color: #000000; 
+			text-decoration: none; 
+			} 
+			a:hover { 
+			font-size: 12px; 
+			color: #999999; 
+			text-decoration: underline; 
+			} 
+		</style>
+	</span>
 </head>
 <body>
-	<p>Languague : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
-	<p>Function: <a href='/'>Generation</a> <a href='{% url "Update"%}'>Update Text</a></p>
-	<span>------------------------------------------------------Search-------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>Address : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked><br><br>
-	&emsp;&emsp;<span>Account : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>Password : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>Text : </span><input id="Search_Text" />&emsp;<input type="radio" id="Search_item" value="3" name="Search_select_button"><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Search_button' value="Search"/><br><br><br>
-	<p id='Searched'></p>
+	<div id="language-nav">
+			<div id="language-label" style="width:45%;float:left;">
+				&emsp;&emsp;Language
+			</div>
+			<div id="language-choice" style="width:45%;float:left;">
+				<a href="{% url 'search' %}"><button>English</button></a>&emsp;&emsp;<a href="{% url 'search_zh' %}"><button> 简体中文</button></a>
+			</div>
+		</div>
+		<br><br>
+		<div id="function-nav" >
+			<div id="function-label" style="width:45%;float:left;">
+				&emsp;&emsp;Function
+			</div>
+			<div id="function-choice" style="width:45%;float:left;">
+				<a href="{% url 'home' %}"><button>Generation</button></a>&emsp;&emsp;<a href="{% url 'Update' %}"><button>Update Text</button></a>
+			</div>
+		</div>
+		<br><br>
+		<hr>
+		<p align="center">Search</p>
+		<hr>
+		<div id="search">
+			<div id="search-label-Address" style="width:45%;float:left;">
+				&emsp;&emsp;Address
+			</div>
+			<div id="search-choice-Address" style="width:45%;float:left;">
+				<input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked>
+			</div>
+			<br><br>
+			<div id="search-label-Account" style="width:45%;float:left;">
+				&emsp;&emsp;Account
+			</div>
+			<div id="search-choice-Account" style="width:45%;float:left;">
+				<input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button">
+			</div>
+			<br><br>
+			<div id="search-label-Password" style="width:45%;float:left;">
+					&emsp;&emsp;Password
+			</div>
+			<div id="search-choice-Password" style="width:45%;float:left;">
+					<input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button">
+			</div>
+			<br><br>
+	
+			<div id="search-label-Text" style="width:45%;float:left;">
+					&emsp;&emsp;Text
+			</div>
+			<div id="search-choice-Text" style="width:45%;float:left;">
+					<input id="Search_Text" />&emsp;<input type="radio" id="Search_item" value="3" name="Search_select_button">
+			</div>
+			<br><br>
+			<p align="center"><input type="button" id='Search_button' value="Search"/></p>
+			<br>
+		</div>
+		<hr>
+		<p align="center" id='Searched'>None</p>
+	
 </body>
 </html>
