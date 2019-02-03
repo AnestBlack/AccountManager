@@ -100,20 +100,106 @@
     </script>
 </head>
 <body onload="updatever()">
-	<p id="ver"></p>
-	<p>语言 : <a href="/">English</a>&emsp;&emsp;<a href='{% url "index_zh" %}'>简体中文</a></p>
-	<p>功能区: <a href="{% url 'search_zh' %}">搜索</a> <a href="{% url 'Update_zh'%}">更新标注</a></p>
-	&emsp;&emsp;<span>地址 : </span><input id="Address" /><br><br>
-	&emsp;&emsp;<span>帐号 : </span><input id="Account" /><br><br>
-	&emsp;&emsp;<span>自定义帐号 : </span><input type='checkbox' id="Account_Key" /><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Generate' value="生成"><br><br><br>
-	<span>----------------------------------------------------------------------------生成结果-----------------------------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>帐号 : </span><input id="Result_Account" /><br><br>
-	&emsp;&emsp;<span>密码 lv 1 : </span><input id="pw1" />&emsp;<input type="radio" name="Password_Saveitem" value="1"><br><br>
-	&emsp;&emsp;<span>密码 lv 2 : </span><input id="pw2" />&emsp;<input type="radio" name="Password_Saveitem" value="2"><br><br>
-	&emsp;&emsp;<span>密码 lv 3 : </span><input id="pw3" />&emsp;<input type="radio" name="Password_Saveitem" value="3"><br><br>
-	&emsp;&emsp;<span>密码 lv max : </span><input id="pwmax" size="70"/>&emsp;<input type="radio" name="Password_Saveitem" value="max" checked><br><br>
-	&emsp;&emsp;<span>标注 : </span><input id="text" size="50"/><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Save' value="保存结果"/><br><br><br>
+	<div id="Version-nav">
+		<div id="Version-label" style="width:45%;float:left;">
+			&emsp;&emsp;版本
+		</div>
+		<div id="Version-choice" style="width:45%;float:left;">
+			<span id="ver"></span>
+		</div>
+	</div>
+	<br><br>
+	<div id="language-nav">
+		<div id="language-label" style="width:45%;float:left;">
+			&emsp;&emsp;语言
+		</div>
+		<div id="language-choice" style="width:45%;float:left;">
+			<a href="{% url 'home' %}"><button>English</button></a>&emsp;&emsp;<a href="{% url 'index_zh' %}"><button> 简体中文</button></a>
+		</div>
+	</div>
+	<br><br>
+	<div id="function-nav" >
+		<div id="function-label" style="width:45%;float:left;">
+			&emsp;&emsp;功能
+		</div>
+		<div id="function-choice" style="width:45%;float:left;">
+			<a href="{% url 'index_zh' %}"><button>生成器</button></a>&emsp;&emsp;<a href="{% url 'search_zh' %}"><button>搜索</button></a>&emsp;&emsp;<a href="{% url 'Update_zh' %}"><button>更新标注</button></a>
+		</div>
+	</div>
+	<br><br>
+	<hr>
+	<br>
+	<div id="Generate-div">
+		<div id="Generate-label-Address" style="width:45%;float:left;">
+			&emsp;&emsp;地址
+		</div>
+		<div id="Generate-input-Address" style="width:45%;float:left;">
+			<input id="Address" />
+		</div>
+		<br><br>
+		<div id="Generate-label-Account" style="width:45%;float:left;">
+			&emsp;&emsp;账号
+		</div>
+		<div id="Generate-input-Account" style="width:45%;float:left;">
+			<input id="Account" />
+		</div>
+		<br><br>
+		<div id="Generate-label-Used_Account_Key" style="width:45%;float:left;">
+			&emsp;&emsp;使用自定义账号
+		</div>
+		<div id="Generate-choice-text" style="width:45%;float:left;">
+			<input type='checkbox' id="Account_Key" />
+		</div>
+	</div>
+	<br>
+	<p align="center"><input type="button" id='Generate' value="生成"></p>
+	<br>
+	<hr><p align="center">生成结果 </p><hr><br>
+	<div id="Generated_Result-div">
+		<div id="Generated_Result-label-Account" style="width:45%;float:left;">
+			&emsp;&emsp;账号
+		</div>
+		<div id="Generated_Result-input-Account" style="width:45%;float:left;">
+			<input id="Result_Account" />
+		</div>
+		<br><br>
+		<div id="Generated_Result-label-Password_lv1" style="width:45%;float:left;">
+			&emsp;&emsp;密码 lv 1
+		</div>
+		<div id="Generated_Result-input-Password_lv1" style="width:45%;float:left;">
+			<input id="pw1" />&emsp;<input type="radio" name="Password_Saveitem" value="1">
+		</div>
+		<br><br>
+		<div id="Generated_Result-label-Password_lv2" style="width:45%;float:left;">
+			&emsp;&emsp;密码 lv 2
+		</div>
+		<div id="Generated_Result-input-Password_lv2" style="width:45%;float:left;">
+			<input id="pw2" />&emsp;<input type="radio" name="Password_Saveitem" value="2">
+		</div>
+		<br><br>
+		<div id="Generated_Result-label-Password_lv3" style="width:45%;float:left;">
+			&emsp;&emsp;密码 lv 3
+		</div>
+		<div id="Generated_Result-input-Password_lv3" style="width:45%;float:left;">
+			<input id="pw3" />&emsp;<input type="radio" name="Password_Saveitem" value="3">
+		</div>
+		<br><br>
+		<div id="Generated_Result-label-Password_lvmax" style="width:45%;float:left;">
+			&emsp;&emsp;密码 lv max
+		</div>
+		<div id="Generated_Result-input-Password_lvmax" style="width:45%;float:left;">
+			<input id="pwmax" size="70"/>&emsp;<input type="radio" name="Password_Saveitem" value="max" checked>
+		</div>
+		<br><br>
+		<div id="Generated_Result-label-text" style="width:45%;float:left;">
+			&emsp;&emsp;标注
+		</div>
+		<div id="Generated_Result-input-text" style="width:45%;float:left;">
+			<input id="text" size="50"/>
+		</div>
+		<br><br>
+	</div>
+	<p align="center"> <input type="button" id='Save' value="保存结果"/></p>
+		
 </body>
 </html>

@@ -19,6 +19,7 @@ from v3 import views as v3_views
 from v3 import encypt as v3_encypt
 from v3 import sql as v3_sql
 from v3 import Login as v3_Login
+#from v3 import Admin as v3_Admin
 
 urlpatterns = [
     path('',v3_views.index,name='home'),
@@ -41,6 +42,10 @@ urlpatterns = [
     path('Del/<str:keywordStr>',v3_sql.Delete_Item,name='Delete_Item'),
 
     path("login/",v3_Login.Login,name="login"),
+    #path("Admin/",v3_Admin.index,name="admin_index"),
+    #path('Admin/load_runserverlog', v3_Admin.load_runserverlog,name='load_runserverlog'),
+    path("Admin/",v3_Login.index,name="admin_index"),
+    path('Admin/load_runserverlog', v3_Login.load_runserverlog,name='load_runserverlog'),
     #path('admin/', admin.site.urls),
     #path('Restore',v3_views.Restore_Database,name='restore'),
 ]

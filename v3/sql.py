@@ -68,11 +68,11 @@ def Search_Item(request,keyInt,keywordStr):
     c.execute('select Address,Account,Password,Date,Text from Data where '+KeyMode_Str+' = "'+keywordStr+'";')
     result_Str='<font size=5>'
     for Item in c.fetchall():
-        result_Str+='<table border="1"><tr><td>Address</td><td>'+base64.b64decode(Item[0].encode()).decode()+'</td></tr> \
-         <tr><td>Account</td><td>'+base64.b64decode(Item[1].encode()).decode()+'</td></tr> \
-          <tr><td>Password</td><td>'+base64.b64decode(Item[2].encode()).decode()+'</td></tr>\
-          <tr><td>Date</td><td>'+base64.b64decode(Item[3].encode()).decode()+'</td></tr>\
-          <tr><td>Text</td><td>'+base64.b64decode(Item[4].encode()).decode() +'</td></tr></table><br>'
+        result_Str+='<table border="1"><tr><td>Address</td><td><input readonly style="width:250px" value="'+base64.b64decode(Item[0].encode()).decode()+'"/></td></tr> \
+         <tr><td>  Account  </td><td><input readonly style="width:250px" value="'+base64.b64decode(Item[1].encode()).decode()+'"/></td></tr> \
+          <tr><td>  Password  </td><td><input readonly style="width:250px" value="'+base64.b64decode(Item[2].encode()).decode()+'"/></td></tr>\
+          <tr><td>  Date  </td><td><input readonly style="width:250px" value="'+base64.b64decode(Item[3].encode()).decode()+'"/></td></tr>\
+          <tr><td>  Text  </td><td><input readonly style="width:250px" value="'+base64.b64decode(Item[4].encode()).decode() +'"/></td></tr></table><br>'
     result_Str+='</font>'
     del c,conn
     return HttpResponse(result_Str)
