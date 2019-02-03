@@ -1,10 +1,24 @@
 <html>
 <head>
 	<title>Account Manager</title>
-	<script src='/static/js/jquery-3.3.1.js'></script>
+    <script src='/static/js/jquery-3.3.1.js'></script>
+    <script>
+        function getrunserverlog(){
+
+        }
+        $(document).ready(function(){
+			$("#Runserverlog_button").click(function(){
+				$.get("{% url 'load_runserverlog' %}" ,function(data){
+                    document.getElementById('Runserverlog').innerHTML = data;
+                })	
+			})
+		})
+    </script>
 </head>
 <body>
     <p>Admin Control Page</p>
-    <a href="/Backup">Download Backup</a>
+    <a href="{% url 'backup' %}"><button>Download Backup</button></a><br>
+    <a id="Runserverlog_button"><button>Load Runlog</button></a><br>
+    <span id="Runserverlog"></span>
 </body>
 </html>
