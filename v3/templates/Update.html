@@ -16,11 +16,43 @@
 	</script>
 </head>
 <body>
-	<p>Languague : <a href="{% url 'Update' %}">English</a>&emsp;&emsp;<a href='{% url "Update_zh" %}'>简体中文</a></p>
-	<p>Function: <a href='/'>Generation</a> <a href="{% url 'search'%}">Search</a></p>
-	<span>------------------------------------------------------Update-------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>Date : </span><input id="Update_Date" /><br><br>
-	&emsp;&emsp;<span>Text : </span><input id="Update_Text" /><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Update_button' value="Update"/><br><br><br>
+	<div id="language-nav">
+		<div id="language-label" style="width:45%;float:left;">
+			&emsp;&emsp;Language
+		</div>
+		<div id="language-choice" style="width:45%;float:left;">
+			<a href="{% url 'Update' %}"><button>English</button></a>&emsp;&emsp;<a href="{% url 'Update_zh' %}"><button> 简体中文</button></a>
+		</div>
+	</div>
+	<br><br>
+	<div id="function-nav" >
+		<div id="function-label" style="width:45%;float:left;">
+			&emsp;&emsp;Function
+		</div>
+		<div id="function-choice" style="width:45%;float:left;">
+			<a href="{% url 'home' %}"><button>Generation</button></a>&emsp;&emsp;<a href="{% url 'search' %}"><button>Search</button></a>
+		</div>
+	</div>
+	<br><br>
+	<hr>
+	<p align="center">Update</p>
+	<hr>
+	<div id="Update">
+		<div id="update-label-date" style="width:45%;float:left;">
+			&emsp;&emsp;Date
+		</div>
+		<div id="update-choice-date" style="width:45%;float:left;">
+				<input id="Update_Date" />
+		</div>
+		<br><br>
+		<div id="update-label-text" style="width:45%;float:left;">
+			&emsp;&emsp;Text
+		</div>
+		<div id="update-choice-text" style="width:45%;float:left;">
+				<input id="Update_Text" />
+		</div>
+	</div>
+	<br>
+	<p align="center"><input type="button" id='Update_button' value="Update"/></p>
 </body>
 </html>

@@ -30,14 +30,44 @@
 	</script>
 </head>
 <body>
-	<p>语言 : <a href="{% url 'search' %}">English</a>&emsp;&emsp;<a href='{% url "search_zh" %}'>简体中文</a></p>
-	<p>功能区: <a href='{% url "index_zh" %}'>生成器</a> <a href="{% url 'search_zh'%}">搜索</a></p>
-	<span>------------------------------------------------------更新标注-------------------------------------------------------</span><br><br>
-	&emsp;&emsp;<span>地址 : </span><input id="Search_Address" />&emsp;<input type="radio" id="Search_item" value="0" name="Search_select_button" checked><br><br>
-	&emsp;&emsp;<span>帐号 : </span><input id="Search_Account" />&emsp;<input type="radio" id="Search_item" value="1" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>密码 : </span><input id="Search_Password" />&emsp;<input type="radio" id="Search_item" value="2" name="Search_select_button"><br><br>
-	&emsp;&emsp;<span>标注 : </span><input id="Search_Text" />&emsp;<input type="radio" id="Search_item" value="3" name="Search_select_button"><br><br>
-	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="button" id='Search_button' value="Search"/><br><br><br>
-	<p id='Searched'></p>
+	<div id="language-nav">
+		<div id="language-label" style="width:45%;float:left;">
+			&emsp;&emsp;语言
+		</div>
+		<div id="language-choice" style="width:45%;float:left;">
+			<a href="{% url 'Update' %}"><button>English</button></a>&emsp;&emsp;<a href="{% url 'Update_zh' %}"><button> 简体中文</button></a>
+		</div>
+	</div>
+	<br><br>
+	<div id="function-nav" >
+		<div id="function-label" style="width:45%;float:left;">
+			&emsp;&emsp;功能
+		</div>
+		<div id="function-choice" style="width:45%;float:left;">
+			<a href="{% url 'index_zh' %}"><button>生成器</button></a>&emsp;&emsp;<a href="{% url 'search_zh' %}"><button>搜索</button></a>
+		</div>
+	</div>
+	<br><br>
+	<hr>
+	<p align="center">更新</p>
+	<hr>
+	<div id="Update">
+		<div id="update-label-date" style="width:45%;float:left;">
+			&emsp;&emsp;日期
+		</div>
+		<div id="update-choice-date" style="width:45%;float:left;">
+				<input id="Update_Date" />
+		</div>
+		<br><br>
+		<div id="update-label-text" style="width:45%;float:left;">
+				&emsp;&emsp;标注
+			</div>
+			<div id="update-choice-text" style="width:45%;float:left;">
+					<input id="Update_Text" />
+			</div>
+	</div>
+	<br>
+	<p align="center"><input type="button" id='Update_button' value="Update"/></p>
+		
 </body>
 </html>
