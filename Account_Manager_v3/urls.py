@@ -29,10 +29,10 @@ urlpatterns = [
     path('Update/',v3_views.Update,name='Update'),
     path('Update/zh',v3_views.Update_zh,name='Update_zh'),
 
-    path('getAccount/<str:AddressStr>',v3_encypt.getAccount,name='getAccount'),
-    path('getPassword_1/<str:AddressStr>/<str:AccountStr>',v3_encypt.getPassword_1,name='getPassword_1'),
-    path('getPassword_2/<str:AddressStr>/<str:AccountStr>',v3_encypt.getPassword_2,name='getPassword_2'),
-    path('getPassword_3/<str:AddressStr>/<str:AccountStr>',v3_encypt.getPassword_3,name='getPassword_3'),
+    path('getAccount/',v3_encypt.getAccount,name='getAccount'),
+    path('getPassword_1/',v3_encypt.getPassword_1,name='getPassword_1'),
+    path('getPassword_2/',v3_encypt.getPassword_2,name='getPassword_2'),
+    path('getPassword_3/',v3_encypt.getPassword_3,name='getPassword_3'),
     path('getPassword_max/',v3_encypt.getPassword_max,name='getPassword_max'),
 
     path('Save_Result/',v3_sql.Save_Result_to_sql,name='Save_Result_to_sql'),

@@ -15,7 +15,7 @@ def Save_Result_to_sql(request):
     """if not AddressStr and not AccountStr and not password:
         return 0"""
     if request.method=="POST":
-        if not request.POST.get('AddressStr','') and request.POST.get('AccountStr','') and request.POST.get('password',''):
+        if request.POST.get('AccountStr','') and request.POST.get('password',''):
             return 0
 
         AddressStr=request.POST.get('AddressStr','')
@@ -24,8 +24,10 @@ def Save_Result_to_sql(request):
         Text=request.POST.get('Text','')
 
         log.info(request.META['REMOTE_ADDR']+" Address { "+AddressStr+" } Account { "+AccountStr+" }")
-
-        AddressStr = base64.b64encode(AddressStr.encode()).decode()
+        if AddressStr:
+            AddressStr = base64.b64encode(AddressStr.encode()).decode()
+        else:
+            AddressStr = "Tm9BZGRyZXNz" #NoAddress
         AccountStr = base64.b64encode(AccountStr.encode()).decode()
         password = base64.b64encode(password.encode()).decode()
         if Text:
