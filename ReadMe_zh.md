@@ -1,14 +1,12 @@
-# Account Manage v3.4
+# Account Manage v3.5
  此程序基于 python3.6.3 和 django-2.0.3
  <br>
 ##### 语言 : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
 
 ## 重要历史记录
+### 2019-03-10 : 放弃这个仓库............<br>大概会用flask重建另一个.. 
+### 2019-02-06 : v3.5 管理员 部分尚不完整
 ### 2018-10-26 : v3.4 首先加入认证
-### 2018-07-25 : v3.2 不再支持v3.2前面的版本数据库
-### 请使用Tool/Database_Update_to_3.2.py 来更新你的数据库，复制你的数据库到Tool然后运行Database_Update_to_3.2.py，备份好你原来的数据库并移动New_Database.db到根目录替换原来的！
-
-
 
 ## 用法:
 ### 0. 设置 "MyCode"
@@ -47,7 +45,7 @@
 <br>
 ## 警告
 
-# <font color="#f00">1. 禁止用于生产环境与开放于公网!!!<br><br>禁止用于生产环境与开放于公网!!!<br><br>禁止用于生产环境与开放于公网!!!<br><br></font>
+# <font color="#f00">禁止用于生产环境与开放于公网!!!<br><br>禁止用于生产环境与开放于公网!!!<br><br>禁止用于生产环境与开放于公网!!!<br><br></font>
 
 ## API
 
@@ -72,38 +70,33 @@
 
 ### 6. getAccount
 #### 获得帐号
-#### 例: 127.0.0.1:8000/getAccount/Str
-#### Str : 无空格字符串
+#### 例: 127.0.0.1:8000/getAccount/
 #### 返回一个字符串
 
 ### 7.getPassword_1
 #### 获得密码
-#### 例: 127.0.0.1:8000/getPassword_1/Str1/Str2
-#### Str1 : 无空格字符串 <br> Str2 : 无空格字符串
+#### 例: 127.0.0.1:8000/getPassword_1/
 #### 返回一串数字
 
 ### 8.getPassword_2
 #### 获得密码
-#### 例: 127.0.0.1:8000/getPassword_2/Str1/Str2
-#### Str1 : 无空格字符串 <br> Str2 : 无空格字符串
+#### 例: 127.0.0.1:8000/getPassword_2/
 #### 返回一个字符串
 
 ### 9.getPassword_3
 #### 获得密码
-#### 例: 127.0.0.1:8000/getPassword_3/Str1/Str2
-#### Str1 : 无空格字符串 <br> Str2 : 无空格字符串
+#### 例: 127.0.0.1:8000/getPassword_3/
 #### 返回一个字符串
 
 ### 10.getPassword_max
 #### 获得密码
-#### 例: 127.0.0.1:8000/getPassword_max/Str1/Str2
-#### Str1 : 无空格字符串 <br> Str2 : 无空格字符串
+#### 例: 127.0.0.1:8000/getPassword_max/
 #### 返回一个字符串
 
 ### 11. Save_Result
 #### 保存数据进数据库
-#### 例: 127.0.0.1:8000/Save_Result/Str1/Str2/Str3
-#### Str1 : 地址字符串 <br> Str2 : 帐号字符串 <br> Str3: 密码字符串
+#### 例: 127.0.0.1:8000/Save_Result/
+#### 模式 : Post <br> Address : text(no necessary) <br> Account: text(necessary) <br> Password : text(necessary) <br> Text : text(no necessary)
 
 ### 12. searched
 #### 获得搜索结果
@@ -115,3 +108,24 @@
 #### 下载数据库备份
 #### 例:127.0.0.1:8000/backup
 #### 返回一个db文件
+
+### 14.Update
+#### 英文更新页面
+#### 例:127.0.0.1:8000/Update
+
+### 15.Update/zh
+#### 中文更新页面
+#### 例:127.0.0.1:8000/Update/zh
+
+### 16.Update_Text
+#### 更新标注
+#### 例: 127.0.0.1:8000/Update_Text/str1/str2
+#### str1:Date string ; str2:Text string
+
+### 17.login
+#### 登陆页面
+#### 例:127.0.0.1:8000/login
+
+### 18.Admin
+#### 控制页面
+#### 例:127.0.0.1:8000/Admin
