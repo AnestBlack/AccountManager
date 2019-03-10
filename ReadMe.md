@@ -4,6 +4,7 @@
 ##### Languague : <a href='ReadMe.md'>English</a> <a href='ReadMe_zh.md'>简体中文</a>
 
 ## Important History
+### 2019-03-10 : give up this repo............<br>I will rebuild it with flask.. 
 ### 2019-02-06 : v3.5 admin is not completion.
 ### 2018-10-26 : v3.4 has Auth at first.
 
